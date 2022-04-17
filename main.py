@@ -4,9 +4,13 @@ import os
 from matplotlib import pyplot as plt
 import mediapipe as mp
 import time
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.utils import to_categorical
 
+# creating mediapipe objects
 mp_holistic = mp.solutions.holistic
 mp_drawing = mp.solutions.drawing_utils
+
 
 def mediapipe_detection(image, model):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)     #convert color BGR to RGB
@@ -79,3 +83,6 @@ for action in actions:
             os.makedirs(os.path.join(DATA_PATH, action, str(sequence)))
         except:
             pass
+        
+
+        
